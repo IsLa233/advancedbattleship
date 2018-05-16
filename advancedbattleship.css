@@ -10,7 +10,7 @@ div#board {
   background: url("board.jpg") no-repeat;
 }
 
-div#messagearea {
+div#messageArea {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -48,5 +48,5 @@ form input {
 }
 
 .miss {
-  background: url("ship.png") no-repeat center center;
+  background: url("miss.png") no-repeat center center;
 }
