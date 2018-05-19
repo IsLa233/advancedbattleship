@@ -17,22 +17,22 @@ var model = {
 			var ship = this.ships[i];
 			var index = ship.locations.indexOf(guess);
 			if (ship.hits[index] === "hit") {
-				view.displayMessage("Oops, you already hit that location!");
+				view.displayMessage("Oops, you just hit that location already!");
 				return true;
 			} else if (index >= 0) {
 				ship.hits[index] = "hit";
 				view.displayHit(guess);
-				view.displayMessage("HIT!");
+				view.displayMessage("You hit one part of my battleships, keep fire!");
 
 				if (this.isSunk(ship)) {
-					view.displayMessage("You sank my battleship!");
+					view.displayMessage("You sank all of my battleship, welldone!");
 					this.shipsSunk++;
 				}
 				return true;
 			}
 		}
 		view.displayMiss(guess);
-		view.displayMessage("You missed.");
+		view.displayMessage("It isn't at that location, just keep fire.");
 		return false;
 	},
 
@@ -54,7 +54,7 @@ var model = {
       } while (this.collision(locations));
       this.ships[i].locations = locations;
     }
-    consloe.log("Ships array: " + this.ships);
+    console.log("Ships array: " + this.ships);
   },
 
 
@@ -62,10 +62,10 @@ var model = {
 		var direction = Math.floor(Math.random() * 2);
 		var row, col;
 
-		if (direction === 1) { // horizontal
+		if (direction === 1) {
 			row = Math.floor(Math.random() * this.boardSize);
 			col = Math.floor(Math.random() * (this.boardSize - this.shipLength + 1));
-		} else { // vertical
+		} else {
 			col = Math.floor(Math.random() * (this.boardSize - this.shipLength + 1));
 			row = Math.floor(Math.random() * this.boardSize);
 		}
